@@ -1,8 +1,9 @@
 # 秒哒开发协作管控
 
 [![OpenClaw技能](https://img.shields.io/badge/OpenClaw-技能-orange)](https://github.com/openclaws)
-[![版本](https://img.shields.io/badge/版本-1.3.0-blue)](https://github.com/pz857082775/miaoda-coop-control)
+[![版本](https://img.shields.io/badge/版本-0.1.0-blue)](https://github.com/pz857082775/miaoda-coop-control)
 [![版权](https://img.shields.io/badge/版权-米乐-green)](https://github.com/pz857082775/miaoda-coop-control)
+[![支持平台](https://img.shields.io/badge/支持-Windows%7CmacOS%7CLinux-yellow)](https://github.com/openclaws)
 [![平台](https://img.shields.io/badge/平台-OpenClaw-lightgrey)](https://github.com/openclaws)
 
 作为 OpenClaw 的秒哒开发协作管控技能，实现需求转达、豆包文档生成、文档自动化下载、秒哒任务管控、成果同步全流程自动化。
@@ -14,9 +15,10 @@
 | 项目 | 内容 |
 |------|------|
 | **技能名称** | 秒哒开发协作管控 |
-| **版本** | 1.3.0 |
+| **版本** | 0.1.0 |
 | **版权** | 米乐 |
 | **平台** | OpenClaw |
+| **支持系统** | Windows、macOS、Linux |
 | **作者** | 米乐 |
 | **GitHub** | [pz857082775/miaoda-coop-control](https://github.com/pz857082775/miaoda-coop-control) |
 
@@ -45,8 +47,7 @@
 ### 3. 需求队列缓存 📋
 - **繁忙不拦截**：秒哒开发中时自动收集新需求
 - **智能合并**：将同一应用的多次需求整合为一份完整文档
-- **自动执行**：秒哒空闲后自动发送合并后的需求
-- **去重处理**：自动去除重复需求
+- **自动续跑**：秒哒空闲后自动触发缓存需求
 
 ### 4. 浏览器自动化 🌐
 完整自动化操作流程：
@@ -65,9 +66,14 @@
 
 ### 6. 强制规范输出 📝
 AI生成的需求文档必须包含：
-- **前端PC端界面功能**：电脑端页面布局、按钮、操作效果
+- **前端PC端界面功能**：电脑端页面布局、按钮，操作效果
 - **前端手机端界面功能**：仿APP风格、底部导航、按钮大小
-- **管理后台界面功能**：登录、数据增删改查、权限控制
+- **管理后台界面功能**：登录，数据增删改查、权限控制
+
+### 7. 自动更新检查 🔄
+- 用户发送 /检查更新 自动检测GitHub最新版本
+- 显示版本差异和更新内容
+- 提醒用户更新
 
 ---
 
@@ -76,14 +82,25 @@ AI生成的需求文档必须包含：
 | 指令 | 用途 | 示例 |
 |------|------|------|
 | `/新建应用` | 全新开发网站/游戏/小程序 | `/新建应用 开发一个企业官网` |
-| `/优化` | 优化已有应用 | `/优化 APP-001 增加用户登录功能` |
-| `/修复` | 修复BUG | `/修复 APP-001 首页按钮点击无反应` |
+| `/优化` | 优化已有应用 | `/优化 APP-001 增加用户登录` |
+| `/修复` | 修复BUG | `/修复 APP-001 首页按钮无反应` |
+| `/检查更新` | 检查新版本 | `/检查更新` |
 
 ### 指定AI模型
 ```
 /新建应用 模型:KIMI + 需求
 /优化 应用ID 模型:DeepSeek + 需求
 ```
+
+---
+
+## 支持平台
+
+| 平台 | 状态 |
+|------|------|
+| Windows | ✅ 支持 |
+| macOS | ✅ 支持 |
+| Linux | ✅ 支持 |
 
 ---
 
@@ -113,11 +130,11 @@ miaoda-coop-control/
 ├── SKILL.md                    # 技能说明文档
 ├── README.md                   # GitHub介绍
 ├── scripts/
-│   ├── main.py               # 主程序入口
-│   ├── browser_ops.py         # 浏览器自动化
-│   ├── task_queue.py        # 需求队列模块
-│   └── app_manager.py       # 应用管理模块
-└── data/                    # 数据存储目录
+│   ├── main.py              # 主程序入口
+│   ├── browser_ops.py        # 浏览器自动化
+│   ├── task_queue.py       # 需求队列模块
+│   └── app_manager.py     # 应用管理模块
+└── data/                     # 数据存储目录
     ├── apps.json
     ├── task_queue.json
     └── task_status.json
@@ -129,24 +146,13 @@ miaoda-coop-control/
 
 | 版本 | 日期 | 变化 |
 |------|------|------|
-| 1.3.0 | 2026-03-16 | 自动化执行版（完整Python脚本） |
-| 1.0.5 | 2026-03-16 | 完整优化版 |
-| 1.0.4 | 2026-03-16 | 自动下载文档版 |
-| 1.0.3 | 2026-03-16 | 强制三端界面描述版 |
-| 1.0.2 | 2026-03-16 | 极简优化版 |
-| 1.0.1 | 2026-03-16 | 优化需求转发版 |
-| 1.0.0 | 2026-03-16 | 最终定型版 |
-| 0.5.0 | 2026-03-16 | 降Token强化版 |
-| 0.4.0 | 2026-03-16 | 多端适配+应用管理版 |
-| 0.3.0 | 2026-03-16 | 网站前端/管理后台版 |
-| 0.2.0 | 2026-03-16 | 网页游戏适配版 |
-| 0.1.0 | 2026-03-16 | 初始版本 |
+| 0.1.0 | 2026-03-16 | 初始版本（支持自动更新） |
 
 ---
 
 ## 安装方法
 
-1. 下载 `miaoda-coop-control-1.3.0.zip`
+1. 下载 `miaoda-coop-control-0.1.0.zip`
 2. 解压到 OpenClaw skills 目录
 3. 重启 OpenClaw
 
@@ -164,8 +170,8 @@ miaoda-coop-control/
 # 优化应用
 /优化 APP-001 增加用户注册功能
 
-# 修复BUG
-/修复 APP-001 首页轮播图不自动切换
+# 检查更新
+/检查更新
 ```
 
 ---
@@ -183,4 +189,4 @@ miaoda-coop-control/
 
 ---
 
-*本技能基于 OpenClaw 平台开发*
+*本技能基于 OpenClaw 平台开发，支持 Windows、macOS、Linux 全平台运行*
