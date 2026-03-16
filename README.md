@@ -1,79 +1,50 @@
 # 秒哒开发协作管控
 
-[![版本](https://img.shields.io/badge/版本-1.2.0-blue)](https://github.com/mile-ai/miaoda-coop-control)
+[![版本](https://img.shields.io/badge/版本-1.3.0-blue)](https://github.com/mile-ai/miaoda-coop-control)
 [![版权](https://img.shields.io/badge/版权-米乐-green)](https://github.com/mile-ai)
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-技能-orange)](https://github.com/openclaws)
 
-作为 OpenClaw 的秒哒开发协作管控技能，支持需求队列缓存合并，繁忙时不拦截。
+作为 OpenClaw 的秒哒开发协作管控技能，自动化执行版。
 
 ## 核心特性
 
 | 特性 | 说明 |
 |------|------|
-| **多AI模型** | 豆包(默认)、DeepSeek、KIMI、文心一言、千问、GPT、智谱 |
-| **需求队列** | 秒哒繁忙时自动缓存需求，合并后自动执行 |
-| **纯中转** | 不加工、不修改、不推理 |
-| **自动化** | 全程浏览器操作，无需人工 |
-| **零Token** | 仅本地调度 |
+| **自动化执行** | 完整Python脚本，真正实现自动化 |
+| **多AI模型** | 支持豆包、Kimi等 |
+| **需求队列** | 繁忙时自动缓存合并 |
+| **应用管理** | 全生命周期管理 |
 
-## 适用场景
+## 文件结构
 
-- 网站开发
-- 网页游戏
-- 小程序
-- WAP
-- 管理后台
-
-## 触发指令
-
-| 指令 | 格式 |
-|------|------|
-| `/新建应用` | `/新建应用 + 需求` |
-| `/优化` | `/优化 应用ID + 需求` |
-| `/修复` | `/修复 应用ID + BUG` |
-
-## 核心亮点
-
-**秒哒繁忙时不拦截！**
-
-- 自动收集新需求
-- 按应用ID合并零散需求
-- AI生成合并文档
-- 秒哒空闲后自动执行
-
-## 双状态流程
-
-### 空闲时
 ```
-直接执行 → AI生成 → 下载 → 发送给秒哒 → 等待成果
+miaoda-coop-control/
+├── SKILL.md
+├── README.md
+└── scripts/
+    ├── main.py           # 主程序入口
+    ├── browser_ops.py    # 浏览器自动化
+    ├── task_queue.py    # 需求队列
+    └── app_manager.py   # 应用管理
 ```
 
-### 繁忙时
+## 功能模块
+
+1. **main.py** - 解析指令、调度任务
+2. **browser_ops.py** - 浏览器操作AI生成需求
+3. **task_queue.py** - 需求队列与状态管理
+4. **app_manager.py** - 应用信息管理
+
+## 使用
+
+```bash
+python scripts/main.py
 ```
-缓存需求 → 合并 → 生成文档 → 监听状态 → 空闲自动发送
-```
-
-## 模块架构
-
-1. 自动化任务核心模块
-2. 浏览器操作模块
-3. AI模型调度模块
-4. 需求队列缓存合并模块 ⭐
-5. 应用管理模块
-6. 指令交互模块
-7. 异常处理模块
-
-## 安装
-
-1. 下载压缩包
-2. 解压到 OpenClaw skills 目录
-3. 重启 OpenClaw
 
 ## 版本
 
-- v1.2.0 - 需求队列缓存合并
-- v1.1.0 - 多AI模型支持
-- v1.0.5 - 完整优化版
+- v1.3.0 - 自动化执行版
+- v1.2.0 - 需求队列
+- v1.1.0 - 多AI模型
 
 ## 版权
 
