@@ -1,138 +1,278 @@
-# 秒哒需求开发全流程管控技能
+# 秒哒开发协作管控 (miaoda-coop-control)
 
-[![OpenClaw技能](https://img.shields.io/badge/OpenClaw-技能-orange)](https://github.com/openclaws)
-[![版本](https://img.shields.io/badge/版本-0.1.0-blue)](https://github.com/pz857082775/miaoda-coop-control)
-[![版权](https://img.shields.io/badge/版权-米乐-green)](https://github.com/pz857082775/miaoda-coop-control)
-[![支持平台](https://img.shields.io/badge/支持-Windows%7CmacOS%7CLinux-yellow)](https://github.com/openclaws)
-[![平台](https://img.shields.io/badge/平台-OpenClaw-lightgrey)](https://github.com/openclaws)
+<p align="center">
+  <img src="https://img.shields.io/badge/version-0.2.0-blue" alt="Version">
+  <img src="https://img.shields.io/badge/platform-OpenClaw-green" alt="Platform">
+  <img src="https://img.shields.io/badge/license-MIT-orange" alt="License">
+  <img src="https://img.shields.io/badge/AI-Free-red" alt="Free AI">
+</p>
 
-## 一、技能概述
+## 📋 项目简介
 
-### 1. 技能名称
-秒哒需求开发全流程管控技能
+秒哒开发协作管控是 OpenClaw 的智能技能，专门用于软件开发任务的自动化管理。通过自然语言指令即可完成应用开发、功能优化、Bug修复等任务，同时支持**免API使用AI大模型**进行浏览器自动化操作。
 
-### 2. 核心目标
-规范秒哒从「需求收集-需求优化-文档生成-开发执行」的全流程，杜绝秒哒在执行开发任务时接收新需求导致的任务冲突，保障需求开发的完整性、有序性；同时支持技能自身的自动升级更新。
-
-### 3. 核心原则
-- **状态优先**：秒哒的实时状态是所有需求推送动作的核心判断依据
-- **完整收集**：多轮对话优化的需求需全量记忆，无遗漏
-- **闭环执行**：需求从收集到开发完成形成完整链路
+**版权：** 米乐  
+**版本：** 0.2.0  
+**发布日期：** 2026-03-18  
+**GitHub：** [pz857082775/miaoda-coop-control](https://github.com/pz857082775/miaoda-coop-control)
 
 ---
 
-## 二、核心功能模块
+## ✨ 核心特性
 
-### 模块1：需求收集与记忆模块
+### 🎯 三大核心指令
 
-**功能描述**：接收并存储需求优化对话中产出的开发需求，形成结构化的需求记忆库。
+| 指令 | 功能 |
+|------|------|
+| `/新建应用` | 全新开发应用 |
+| `/优化` | 优化现有功能 |
+| `/修复` | 修复Bug |
 
-| 功能点 | 说明 |
-|--------|------|
-| 触发条件 | 与OpenClaw产生需求优化类对话 |
-| 输入 | 需求文本（支持单条/多条、碎片化需求） |
-| 处理 | 去重、结构化存储、实时更新 |
-| 输出 | 需求记忆库（可查询、导出） |
-| 异常处理 | 空需求提示、重复需求确认覆盖 |
+### 🤖 免API AI大模型支持
 
-### 模块2：秒哒状态检测与管控模块
+本技能集成了 **OpenClaw Zero Token**，可以**免费**使用以下AI平台，无需API Key：
 
-**功能描述**：实时监测秒哒运行状态，是全流程的核心管控节点。
+| AI模型 | 支持状态 | 模型名称 |
+|--------|----------|----------|
+| DeepSeek | ✅ 免费 | deepseek-chat, deepseek-reasoner |
+| 豆包 | ✅ 免费 | doubao-seed-2.0, doubao-pro |
+| Kimi | ✅ 免费 | Moonshot v1 8K/32K/128K |
+| 千问 | ✅ 免费 | Qwen 3.5 Plus/Turbo |
+| Claude Web | ✅ 免费 | claude-sonnet/opus |
+| ChatGPT Web | ✅ 免费 | GPT-4, GPT-4 Turbo |
+| Gemini Web | ✅ 免费 | Gemini Pro/Ultra |
+| Grok | ✅ 免费 | Grok 1/2 |
+| 智谱清言 | ✅ 免费 | glm-4-Plus/Think |
 
-| 状态名称 | 状态说明 | 是否允许推送新需求 |
-|----------|----------|--------------------|
-| 开发完成 | 上一轮开发任务已完成 | ✅ 是 |
-| 阅读开发需求 | 正在读取需求，未开始开发 | ❌ 否 |
-| 开发中 | 正在执行开发任务 | ❌ 否 |
-| 异常/暂停 | 开发任务中断 | ❌ 否 |
+### 🌐 浏览器自动化
 
-### 模块3：开发需求文档生成模块
+基于阿里 **Page Agent** 实现强大的浏览器自动化功能：
 
-**功能描述**：将需求传递给豆包，生成标准化、可执行的开发需求文档。
+- 🔍 智能搜索 - 自动打开网页并搜索内容
+- 📝 表单填写 - 自动填写各种网页表单
+- 🖱️ 元素操作 - 自动点击按钮、链接
+- 📄 内容提取 - 自动提取页面内容
+- 📋 复制粘贴 - 自动复制AI回复内容
+- 🌐 多页面任务 - 支持复杂的多步骤任务
 
-| 功能点 | 说明 |
-|--------|------|
-| 触发条件 | 秒哒状态允许 + 记忆库有未开发需求 |
-| 处理 | 需求格式化 → 调用豆包 → 文档校验 |
-| 输出 | 标准化开发需求文档 |
-| 异常处理 | 无需求提示、生成超时提示 |
+### ⚡ 自动配置
 
-### 模块4：需求文档交付与秒哒状态更新模块
-
-**功能描述**：将文档传递给秒哒，同步更新状态。
-
-| 功能点 | 说明 |
-|--------|------|
-| 处理 | 文档交付 → 状态更新 → 记忆库清空 → 进度跟踪 |
-| 输出 | 交付成功/失败提示 |
-| 异常处理 | 文档不完整禁止交付、状态更新失败校正 |
-
-### 模块5：自动升级更新模块
-
-**功能描述**：对接GitHub仓库，实现技能自动升级。
-
-| 功能点 | 说明 |
-|--------|------|
-| 触发条件 | 每日定时检测 / 用户手动检查 |
-| 处理 | 版本对比 → 自动下载 → 静默升级 → 版本回滚 |
-| 输出 | 升级成功/无更新提示 |
-| 异常处理 | 仓库访问失败提示、开发中暂停升级 |
+- `/安装扩展` - 自动安装Page Agent Chrome扩展
+- `/配置AI` - 自动配置免费AI模型
+- `/检查更新` - 自动检查技能更新
 
 ---
 
-## 三、整体逻辑链路
+## 🚀 快速开始
 
-```
-Step1：需求收集 → Step2：状态检测 → Step3：文档生成 → Step4：文档交付&状态更新 → Step5：开发执行 → Step6：自动升级
- ↑ ↓
- └─────────────────────────────────────────────────────────────────────┘
-（秒哒开发完成后，回到Step1，接收新一轮需求）
+### 1. 安装依赖
+
+```bash
+# 确保已安装 OpenClaw
+npm install -g openclaw
 ```
 
----
+### 2. 安装技能
 
-## 四、指令说明
+```bash
+# 克隆项目
+git clone https://github.com/pz857082775/miaoda-coop-control.git
+cd miaoda-coop-control
+```
 
-| 指令 | 用途 |
-|------|------|
-| /新建应用 | 全新开发需求 |
-| /优化 | 优化已有应用 |
-| /修复 | 修复BUG |
-| /检查更新 | 检查GitHub最新版本 |
-| /状态 | 查询秒哒当前状态 |
-| /需求列表 | 查看待开发需求 |
+### 3. 配置免API AI（可选）
 
----
+```bash
+# 启动 OpenClaw Zero Token 服务
+cd openclaw-zero-token
+./server.sh start
 
-## 五、技术特性
+# 在浏览器中登录目标AI平台
+# 然后使用指令配置
+```
 
-| 特性 | 说明 |
-|------|------|
-| 零Token消耗 | 仅做指令解析和自动化调度 |
-| 跨平台 | Windows、macOS、Linux |
-| 日志管理 | 全流程操作可追溯 |
-| 人工干预 | 所有步骤支持手动接管 |
-| 自动升级 | GitHub版本检测与更新 |
+### 4. 使用指令
 
----
+```
+# 开发新应用
+/新建应用 帮我开发一个TodoList应用
 
-## 六、版本信息
+# 优化功能
+/优化 优化搜索性能
 
-| 项目 | 内容 |
-|------|------|
-| 技能名称 | 秒哒需求开发全流程管控 |
-| 版本 | 0.1.0 |
-| 版权 | 米乐 |
-| 平台 | OpenClaw |
-| 支持系统 | Windows、macOS、Linux |
-| GitHub | pz857082775/miaoda-coop-control |
+# 修复Bug
+/修复 登录页面闪退
 
----
+# 配置免费AI
+/配置AI
 
-## 七、版权声明
+# 安装浏览器扩展
+/安装扩展
 
-版权所有 © 2026 米乐. 保留所有权利。
+# 浏览器自动化
+/浏览器操作 打开百度搜索OpenClaw
+```
 
 ---
 
-*本技能基于 OpenClaw 平台开发*
+## 📁 项目结构
+
+```
+miaoda-coop-control/
+├── SKILL.md                      # 技能定义文件
+├── README.md                     # 说明文档
+├── data/                         # 数据目录
+│   └── apps.json                # 应用数据存储
+├── scripts/                      # 脚本目录
+│   ├── main.py                  # 主程序入口
+│   ├── app_manager.py           # 应用管理模块
+│   ├── browser_ops.py           # 浏览器操作（含OpenClaw集成）
+│   ├── task_queue.py            # 任务队列
+│   └── install_extension.py    # 扩展安装脚本
+├── references/                   # 参考文档
+│   ├── page-agent.md           # Page Agent集成参考
+│   └── openclaw-zero-token.md  # OpenClaw集成参考
+└── openclaw-zero-token/         # OpenClaw Zero Token（已集成）
+```
+
+---
+
+## 🔧 技术架构
+
+### 系统架构图
+
+```
+┌─────────────────────────────────────────────────────────┐
+│              miaoda-coop-control 技能                    │
+├─────────────────────────────────────────────────────────┤
+│                                                          │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐    │
+│  │ 任务调度器  │  │  应用管理器  │  │  任务队列   │    │
+│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘    │
+│         │                │                │            │
+│         └────────────────┼────────────────┘            │
+│                          ▼                              │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │            核心引擎                             │   │
+│  └──────────────────┬──────────────────────────────┘   │
+│                     │                                    │
+│         ┌───────────┴───────────┐                      │
+│         ▼                       ▼                      │
+│  ┌──────────────┐    ┌────────────────────┐          │
+│  │ Page Agent   │    │ OpenClaw Zero      │          │
+│  │ (浏览器控制)  │    │     Token          │          │
+│  └──────┬───────┘    └─────────┬──────────┘          │
+│         │                       │                      │
+│         └───────────┬───────────┘                      │
+│                     ▼                                    │
+│         ┌─────────────────────┐                         │
+│         │   免费 AI 大模型     │                         │
+│         │ DeepSeek/豆包/Kimi  │                         │
+│         │ Claude/Gemini/Grok │                         │
+│         └─────────────────────┘                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 核心技术栈
+
+- **Python** - 主要编程语言
+- **OpenClaw** - AI Agent 框架
+- **Page Agent** - 阿里开源浏览器自动化
+- **OpenClaw Zero Token** - 免API调用大模型
+
+---
+
+## 📖 详细功能说明
+
+### 1. 应用管理
+
+- 自动生成唯一应用ID
+- 状态跟踪（开发中/已完成）
+- 版本记录
+
+### 2. 任务队列
+
+- 需求自动收集
+- 智能合并重复请求
+- 优先级调度
+
+### 3. 免API调用
+
+**传统方式 vs Zero Token 方式：**
+
+| 对比项 | 传统API | Zero Token |
+|--------|---------|------------|
+| 费用 | 按调用付费 | 完全免费 |
+| 限制 | 有次数限制 | 无限制 |
+| 信用卡 | 需要绑定 | 仅需登录网页 |
+| 安全性 | API可能泄露 | 凭证本地存储 |
+
+### 4. 浏览器自动化示例
+
+```python
+# 浏览器操作示例
+from scripts.browser_ops import BrowserAutomation
+
+browser = BrowserAutomation()
+
+# 检查OpenClaw Zero Token服务
+browser.check_openclaw_zero_token()
+
+# 获取免费AI模型
+models = browser.get_free_ai_models()
+print(models)
+
+# 获取Page Agent配置
+config = browser.get_page_agent_config()
+print(config)
+```
+
+---
+
+## 🔄 版本历史
+
+| 版本 | 日期 | 更新内容 |
+|------|------|----------|
+| 0.2.0 | 2026-03-18 | 集成OpenClaw Zero Token，支持免API使用AI大模型 |
+| 0.1.1 | 2026-03-18 | 集成Page Agent自动安装扩展功能 |
+| 0.1.0 | 2026-03-16 | 初始版本发布 |
+
+---
+
+## ⚠️ 注意事项
+
+1. **浏览器要求** - 需要安装 Chrome 浏览器
+2. **扩展权限** - Page Agent 需要访问页面内容的权限
+3. **首次使用** - 需要在浏览器中登录目标AI平台一次
+4. **服务运行** - 浏览器自动化需要 OpenClaw Zero Token 服务运行
+
+---
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开 Pull Request
+
+---
+
+## 📄 许可证
+
+MIT License - 免费开源，欢迎使用
+
+---
+
+## 🙏 致谢
+
+- [OpenClaw](https://github.com/openclaw/openclaw) - AI Agent 框架
+- [Page Agent](https://github.com/alibaba/page-agent) - 阿里开源浏览器自动化
+- [OpenClaw Zero Token](https://github.com/linuxhsj/openclaw-zero-token) - 免API解决方案
+
+---
+
+<p align="center">Made with ❤️ by 米乐</p>
+<p align="center">免API AI 驱动 | 浏览器自动化新时代</p>
